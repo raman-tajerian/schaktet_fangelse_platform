@@ -4,7 +4,11 @@ using System.Text;
 
 namespace schaktet_fangelse_platform
 {
-    internal class Bodeln
+    internal class Bodeln: Medfange
     {
+        public Bodeln() : base("Bodeln", hp: 35, attack: 15, xpBeloning: 35, guldMin: 15, guldMax: 25)
+        {
+
+        }
     }
 }
