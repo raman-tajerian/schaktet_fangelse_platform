@@ -16,12 +16,34 @@ namespace SchaktetFangelsePlatform
         public int Dagar { get; private set; }
         public int Guld { get; private set; }
 
-    internal class Fange
-    {
+        private int XPForNastaLevel => 50 * Level;  // Här utförs räkning av XP vid nästa nivå
+
+        // Konstruktorn, hårdkodat eftersom alla spelare börjar med samma förutsättningar, konstruktor tar därför bara emot namn
+        public Fange(string namn)
+        {
+            Namn = namn;
+            HP = 100;
+            MaxHP = 100;
+            Attack = 10;
+            Forsvar = 5;
+            Level = 1;
+            XP = 0;
+            Dagar = 0;
+            Guld = 0;
+        }
+
+
+
+
+
+
+
+
+
+        internal class Fange
+        {
+        }
     }
-}
-
-
 
 
 
@@ -40,3 +62,5 @@ namespace SchaktetFangelsePlatform
 // Vid level up: +maxHP = +20
 // Vid level up: + attack = 3
 // Guld = 0
+
+ 
