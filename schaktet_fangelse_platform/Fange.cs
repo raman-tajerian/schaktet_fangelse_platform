@@ -32,19 +32,50 @@ namespace SchaktetFangelsePlatform
             Guld = 0;
         }
 
-
-
-
-
-
-
-
-
-        internal class Fange
+        // Metoder
+        public bool TakeDamage(int skada)
         {
+            HP -= skada;
+
+            if (HP < 0)
+            {
+                HP = 0; // HP kommer aldrig visas som negativt i spelet
+            }
+            Console.WriteLine($"{Namn} tar {skada}. HP kvar: {HP}/{MaxHP}");
+            return HP <= 0;
+        }
+
+        public void Heal()
+        {
+            HP = MaxHP;
+            Console.WriteLine($"{Namn} Du har läkt helt");
+        }
+
+        public void GainXP(int mangd)
+        {
+            XP += mangd;
+            Console.WriteLine($"{Namn} får {mangd} XP. Totalt XP: {XP}");
+
+            // While istället för if, ifall spelaren får så mycket XP att flera levels klaras av samtidigt
+            while (XP >= XPForNastaLevel)
+            {
+                XP -= XPForNastaLevel;
+                LevelUp();
+            }
+        }
+
+        public void LevelUp()
+        {
+            Level++;
+            MaxHP += 20;
+            Attack += 3;
+            HP = MaxHP;
+
+            Console.WriteLine($"{Namn} har nivå {Level} i schaktet!");
+            Console.WriteLine($"Ny MaxHP: {MaxHP}, ny Attack: {Attack}");
         }
     }
-
+}
 
 
 // Namn, HP, MaxHP, Attack, Försvar, Level, XP, Dagar överlevda - som fält/properties
@@ -54,6 +85,8 @@ namespace SchaktetFangelsePlatform
 // LevelUP() - Höjer level, ökar maxHP och attack, återställer HP
 // Konstruktor med privata fält och properties (inte bara publika variabler)
 
+// Värden
+//----------
 // HP / maxHP = 100
 // Attack = 10
 // Försvar = 5
