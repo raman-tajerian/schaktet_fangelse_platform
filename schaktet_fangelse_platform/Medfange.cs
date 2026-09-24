@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchaktetFangelsePlatform;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,6 +34,16 @@ namespace schaktet_fangelse_platform
                 return true;
             else
                 return false;
+        }
+        public void Anfall(Fange fange)
+        {
+            fange.TakeDamage(this.Attack);
+        }
+
+        private static Random slump = new Random();
+        public int TappaGuld()
+        {
+            return slump.Next(GuldMin, GuldMax + 1); //En range mellan GuldMin och GuldMax, + 1 -> för att man ska kunna få GuldMax värdet också
         }
 
     }
