@@ -90,12 +90,30 @@ namespace schaktet_fangelse_platform
                             striden = false;
                         }
                     }
+
+                    if (fange.HP > 0)
+                    {
+                        fange.NyDag();
+                    }
+
+                }
+
+                else if (val == 2)
+                {
+                    fange.Heal();
+                    fange.NyDag();
+                }
+
+                else if (val == 3)
+                {
+                    Console.WriteLine("Du hoppar på plattformen och åker djupare ner i schaktet");
+                    fange.GainXP(10);
+                    fange.NyDag();
+
                 }
             }
-            
 
-
-
+            Console.WriteLine($"\nSpelet är slut! Du överlevde i {fange.Dagar} dagar och nådde level {fange.Level}");
 
         }
     }
