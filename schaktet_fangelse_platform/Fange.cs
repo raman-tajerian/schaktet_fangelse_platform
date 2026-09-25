@@ -33,6 +33,12 @@ namespace schaktet_fangelse_platform
         }
 
         // Metoder
+
+        public void NyDag()
+        {
+            Dagar++;
+            Console.WriteLine($"En dag har gått. Dagar i schaktet: {Dagar}");
+        }
         public bool TakeDamage(int skada)
         {
             HP -= skada;
