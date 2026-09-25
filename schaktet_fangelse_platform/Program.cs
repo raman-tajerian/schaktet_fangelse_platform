@@ -94,7 +94,6 @@ namespace schaktet_fangelse_platform
                         {
                             Console.WriteLine($"{fange.Namn} dog\nGAME OVER");
                             striden = false;
-                            return;
                         }
                     }
 
