@@ -1,4 +1,4 @@
-﻿using SchaktetFangelsePlatform;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,20 +12,25 @@ namespace schaktet_fangelse_platform
         public string Namn { get; private set; }
         public int HP { get; private set; }
         public int Attack { get; private set; }
+        public int Forsvar { get; private set; }
         public int XPBeloning { get; private set; }
         public int GuldMin { get; private set; } //Intervall för guld drop inte ett fast belopp
-        public int GuldMax { get; private set; } //
+        public int GuldMax { get; private set; }
+        
+      
 
 
         //Protected konstruktor för att endast subklasserna ska kunna anropa konstruktorn
-        protected Medfange(string namn, int hp, int attack, int xpBeloning, int guldMin, int guldMax)
+        protected Medfange(string namn, int hp, int attack,int forsvar, int xpBeloning, int guldMin, int guldMax)
         {
             Namn = namn;
             HP = hp;
             Attack = attack;
+            Forsvar = forsvar;
             XPBeloning = xpBeloning;
             GuldMin = guldMin;
             GuldMax = guldMax;
+
         }
         public bool TakeDamage(int skada)
         {
