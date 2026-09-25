@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SchaktetFangelsePlatform
+namespace schaktet_fangelse_platform
 {
 
     public class Fange
