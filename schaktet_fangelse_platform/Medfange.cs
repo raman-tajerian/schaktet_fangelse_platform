@@ -34,11 +34,13 @@ namespace schaktet_fangelse_platform
         }
         public bool TakeDamage(int skada)
         {
-            HP = HP - skada;
-            if (HP <= 0)
-                return true;
-            else
-                return false;
+            HP -= skada;
+            if (HP < 0)
+            {
+                HP = 0; // Monster HP blir aldrig negativt
+            }
+
+            return HP <= 0;
         }
         public void Anfall(Fange fange)
         {
