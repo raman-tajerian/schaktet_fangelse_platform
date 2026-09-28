@@ -6,6 +6,7 @@ namespace schaktet_fangelse_platform
 {
     class Program
     {
+
         static void Main(string[] args)
         {
 
@@ -15,19 +16,12 @@ namespace schaktet_fangelse_platform
             string namn = Console.ReadLine();
             Fange fange = new Fange(namn);
 
-            // Lista av monstertyper
-            List<Medfange> monsterTyper = new List<Medfange>
-            {
-                new Utsvulten(),
-                new Hamstraren(),
-                new Bodeln()
-            };
 
             Random rnd = new Random();
 
             // Huvudloop som körs till spelaren dör
             while (fange.HP > 0)
-                {
+            {
                 Console.WriteLine("Vad vill du göra idag?");
                 Console.WriteLine("1) Vänta på plattformen");
                 Console.WriteLine("2) Vila och Läka");
@@ -37,8 +31,16 @@ namespace schaktet_fangelse_platform
 
                 if (val == 1)
                 {
-                   
-                    Medfange monster = monsterTyper[rnd.Next(0, monsterTyper.Count)]; //Slumpar ett monster ur listan
+
+                    List<Medfange> monsterTyper = new List<Medfange>
+                    {
+                        new Utsvulten(),
+                        new Hamstraren(),
+                        new Bodeln()
+
+                    };
+
+                    Medfange monster = monsterTyper[rnd.Next(0, monsterTyper.Count)];
 
                     bool striden = true;
                     while (striden == true)
@@ -55,40 +57,64 @@ namespace schaktet_fangelse_platform
 
                         bool monsterDog = false;
                         bool fangeDog = false;
-                        
+
+                        int monsterSkada = monster.Attack - fange.Forsvar;
+                        if (monsterSkada < 1)
+                        {
+                            monsterSkada = 1;
+                        }
+
 
                         if (val2 == 1) //Försvara
                         {
-                            int skada = monster.Attack/2;
-                            
+                            int skada = monsterSkada / 2;
+                            if (skada < 1)
+                            {
+                                skada = 1;
+                            }
+
                             fangeDog = fange.TakeDamage(skada);
 
                         }
                         else if (val2 == 2) //Anfall
                         {
                             int skada = fange.Attack - monster.Forsvar;
-                            int skada2 = monster.Attack;
-                           
-                            fangeDog = fange.TakeDamage(skada2);
+                            if (skada < 1)
+                            {
+                                skada = 1;
+                            }
+
                             monsterDog = monster.TakeDamage(skada);
 
+                            if (monsterDog == false)
+                            {
+                                fangeDog = fange.TakeDamage(monsterSkada);
+                            }
+
                         }
-                        else if (val2 == 3) //spring
+                        else if (val2 == 3) // Spring
                         {
                             int skada = rnd.Next(1, monster.Attack + 1);
-                            
+
                             fangeDog = fange.TakeDamage(skada);
+
+                            if (fangeDog == false)
+                            {
+                                Console.WriteLine("Du flydde!");
+                                striden = false;
+                            }
                         }
                         if (monsterDog)
                         {
+
+                            Console.WriteLine($"{monster.Namn} blev besegrad. ");
+
                             fange.GainXP(monster.XPBeloning);
-                            
-                            int Guld = monster.TappaGuld();
 
-                            Console.WriteLine($"{monster.Namn} blev besegrad");
+                            int guld = monster.TappaGuld();
+                            fange.LaggTillGuld(guld);
 
-                            striden = false;
-
+                            striden = false;  
                         }
                         if (fangeDog)
                         {
@@ -97,11 +123,12 @@ namespace schaktet_fangelse_platform
                         }
                     }
 
+
                     if (fange.HP > 0)
                     {
                         fange.NyDag();
-                    }
 
+                    }
                 }
 
                 else if (val == 2)
@@ -126,7 +153,7 @@ namespace schaktet_fangelse_platform
             }
 
             Console.WriteLine($"\nSpelet är slut! Du överlevde i {fange.Dagar} dagar och nådde level {fange.Level}. Total XP: {fange.XP}");
-
         }
     }
 }
+  
