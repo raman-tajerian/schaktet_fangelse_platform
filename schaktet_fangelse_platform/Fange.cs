@@ -57,6 +57,11 @@ namespace schaktet_fangelse_platform
             Console.WriteLine($"{Namn} Du har läkt helt");
         }
 
+        public void LaggTillGuld(int mangd)
+        {
+            Guld += mangd;
+            Console.WriteLine($"{Namn} hittar {mangd} guld! Totalt guld: {Guld}");
+        }
         public void GainXP(int mangd)
         {
             XP += mangd;
