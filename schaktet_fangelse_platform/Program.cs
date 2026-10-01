@@ -27,7 +27,8 @@ namespace schaktet_fangelse_platform
                 Console.WriteLine("Vad vill du göra idag?");
                 Console.WriteLine("1) Vänta på plattformen");
                 Console.WriteLine("2) Vila och Läka");
-                Console.WriteLine("3) Hoppa på plattform och åk ner till Svarta Marknaden");
+                Console.WriteLine("3) Besök den Svarta Marknaden");
+                Console.WriteLine("4) Åk ner till Arenan");
                 int val = int.Parse(Console.ReadLine());
                 int Level = fange.Level;
 
@@ -145,7 +146,7 @@ namespace schaktet_fangelse_platform
                     if (Level >= 0)
                     {
                        
-                            Console.WriteLine("Du hoppar på plattformen och åker djupare ner i schaktet");
+                            Console.WriteLine("Besöker Svarta Marknaden...");
                             Console.WriteLine();
                              while (Arena)
                         {
@@ -196,6 +197,11 @@ namespace schaktet_fangelse_platform
                     {
                         Console.WriteLine($"{fange.Namn} måste vara minst level 5 för att åka ner i schaktet");
                     }
+                }
+                else if (val == 4)
+                {
+                    Arenan arena = new Arenan();
+                    arena.StartaArena(fange, rnd);
                 }
             }
 
