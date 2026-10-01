@@ -4,9 +4,9 @@ using System.Text;
 
 namespace schaktet_fangelse_platform
 {
-    internal class Improviseradkniv : Redskap
+    internal class ImproviseradKniv : Redskap
     {
-        public Improviseradkniv() : base("Improviserad Kniv", attackBonus: 4, pris: 15) { }
+        public ImproviseradKniv() : base("Improviserad Kniv", attackBonus: 4, pris: 15) { }
     }
 
 }
