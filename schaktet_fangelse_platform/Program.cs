@@ -15,6 +15,8 @@ namespace schaktet_fangelse_platform
             Console.Write("Skriv ditt namn: ");
             string namn = Console.ReadLine();
             Fange fange = new Fange(namn);
+            SvartaMarknaden marknad = new SvartaMarknaden();
+            
 
 
             Random rnd = new Random();
@@ -25,7 +27,7 @@ namespace schaktet_fangelse_platform
                 Console.WriteLine("Vad vill du göra idag?");
                 Console.WriteLine("1) Vänta på plattformen");
                 Console.WriteLine("2) Vila och Läka");
-                Console.WriteLine("3) Hoppa på plattform och åk ner");
+                Console.WriteLine("3) Hoppa på plattform och åk ner till Svarta Marknaden");
                 int val = int.Parse(Console.ReadLine());
                 int Level = fange.Level;
 
@@ -137,13 +139,58 @@ namespace schaktet_fangelse_platform
                     fange.NyDag();
                 }
 
-                else if (val == 3)
+                else if (val == 3) // Svarta Marknaden
                 {
-                    if (Level >= 5)
+                    bool Arena = true;
+                    if (Level >= 0)
                     {
-                        Console.WriteLine("Du hoppar på plattformen och åker djupare ner i schaktet");
-                        fange.GainXP(10);
-                        fange.NyDag();
+                       
+                            Console.WriteLine("Du hoppar på plattformen och åker djupare ner i schaktet");
+                            Console.WriteLine();
+                             while (Arena)
+                        {
+                            marknad.VisaSortiment();
+                            int köp = int.Parse(Console.ReadLine());
+                            Metallror metallror = new Metallror();
+                            ImproviseradKniv kniv = new ImproviseradKniv();
+
+                            if (köp == 1)
+                            {
+                                if (fange.Guld >= 15)
+                                {
+                                    int nyAttackSkada = fange.Attack + kniv.AttackBonus;
+                                    fange.Guld = fange.Guld - 15;
+                                    fange.Attack = fange.Attack + 4;
+                                    Console.WriteLine($"Du har köpt {kniv.Namn}. Du gör nu {nyAttackSkada} skada. Guld kvar: {fange.Guld}");
+                                    Console.WriteLine();
+                                }
+                                else if (fange.Guld < 15)
+                                {
+                                    Console.WriteLine($"Du har inte råd med {kniv.Namn} du har {fange.Guld} Guld");
+                                }
+
+                            }
+                            else if (köp == 2)
+                            {
+                                if (fange.Guld >= 40)
+                                {
+                                    int nyAttackSkada = fange.Attack + metallror.AttackBonus;
+                                    fange.Guld = fange.Guld - 40;
+                                    Console.WriteLine($"Du har köpt {metallror.Namn}. Du gör nu {nyAttackSkada} skada. Guld kvar: {fange.Guld}");
+                                    Console.WriteLine();
+                                }
+                                else if (fange.Guld < 40)
+                                {
+                                    Console.WriteLine($"Du har inte råd med {metallror.Namn} du har {fange.Guld} Guld");
+                                }
+                            }
+                            else if (köp == 0)
+                            {
+                                Arena = false;
+                                
+                            }
+                        }
+
                     }
                     else
                     {

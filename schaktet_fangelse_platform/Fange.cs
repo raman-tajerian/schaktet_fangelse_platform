@@ -9,12 +9,12 @@ namespace schaktet_fangelse_platform
         public string Namn { get; private set; }
         public int HP { get; private set; }
         public int MaxHP { get; private set; }
-        public int Attack { get; private set; }
+        public int Attack { get; set; }
         public int Forsvar { get; private set; }
         public int Level { get; private set; }
         public int XP { get; private set; }
         public int Dagar { get; private set; }
-        public int Guld { get; private set; }
+        public int Guld { get; set; }
 
         private int XPForNastaLevel => 50 * Level;  // Här utförs räkning av XP vid nästa nivå
 
