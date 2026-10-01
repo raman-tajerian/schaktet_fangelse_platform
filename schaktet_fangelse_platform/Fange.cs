@@ -81,7 +81,7 @@ namespace schaktet_fangelse_platform
         {
             XP += mangd;
             TotalXP += mangd;
-            Console.WriteLine($"{Namn} får {mangd} XP. Totalt XP: {XP}");
+            Console.WriteLine($"{Namn} får {mangd} XP. Totalt XP: {TotalXP}");
 
             // While istället för if, ifall spelaren får så mycket XP att flera levels klaras av samtidigt
             while (XP >= XPForNastaLevel)
