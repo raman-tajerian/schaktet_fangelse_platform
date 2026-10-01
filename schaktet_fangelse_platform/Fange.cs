@@ -9,12 +9,14 @@ namespace schaktet_fangelse_platform
         public string Namn { get; private set; }
         public int HP { get; private set; }
         public int MaxHP { get; private set; }
-        public int Attack { get; set; }
+        public int Attack { get; private set; }
         public int Forsvar { get; private set; }
         public int Level { get; private set; }
         public int XP { get; private set; }
         public int Dagar { get; private set; }
-        public int Guld { get; set; }
+        public int Guld { get; private set; }
+        public int VapenBonus { get; private set; }
+
 
         private int XPForNastaLevel => 50 * Level;  // Här utförs räkning av XP vid nästa nivå
 
@@ -30,6 +32,7 @@ namespace schaktet_fangelse_platform
             XP = 0;
             Dagar = 0;
             Guld = 0;
+            VapenBonus = 0;
         }
 
         // Metoder
@@ -62,6 +65,17 @@ namespace schaktet_fangelse_platform
             Guld += mangd;
             Console.WriteLine($"{Namn} hittar {mangd} guld! Totalt guld: {Guld}");
         }
+        public void BetalaGuld(int mangd)
+        {
+            Guld -= mangd;
+
+        }
+        public void BytVapen(int bonus)
+        {
+            Attack = Attack - VapenBonus + bonus;
+            VapenBonus = bonus;
+        }
+
         public void GainXP(int mangd)
         {
             XP += mangd;

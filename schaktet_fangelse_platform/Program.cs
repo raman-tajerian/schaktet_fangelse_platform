@@ -142,13 +142,13 @@ namespace schaktet_fangelse_platform
 
                 else if (val == 3) // Svarta Marknaden
                 {
-                    bool Arena = true;
+                    bool svartMarknad = true;
                     if (Level >= 0)
                     {
                        
                             Console.WriteLine("Besöker Svarta Marknaden...");
                             Console.WriteLine();
-                             while (Arena)
+                             while (svartMarknad)
                         {
                             marknad.VisaSortiment();
                             int köp = int.Parse(Console.ReadLine());
@@ -157,15 +157,19 @@ namespace schaktet_fangelse_platform
 
                             if (köp == 1)
                             {
-                                if (fange.Guld >= 15)
+                                if (fange.VapenBonus == kniv.AttackBonus)
                                 {
-                                    int nyAttackSkada = fange.Attack + kniv.AttackBonus;
-                                    fange.Guld = fange.Guld - 15;
-                                    fange.Attack = fange.Attack + 4;
-                                    Console.WriteLine($"Du har köpt {kniv.Namn}. Du gör nu {nyAttackSkada} skada. Guld kvar: {fange.Guld}");
+                                    Console.WriteLine($"Du har redan {kniv.Namn}");
+                                }
+                                else if (fange.Guld >= kniv.Pris)
+                                {
+                                    
+                                    fange.BetalaGuld(kniv.Pris);
+                                    fange.BytVapen(kniv.AttackBonus);
+                                    Console.WriteLine($"Du har köpt {kniv.Namn}. Du gör nu {fange.Attack} skada. Guld kvar: {fange.Guld}");
                                     Console.WriteLine();
                                 }
-                                else if (fange.Guld < 15)
+                                else if (fange.Guld < kniv.Pris)
                                 {
                                     Console.WriteLine($"Du har inte råd med {kniv.Namn} du har {fange.Guld} Guld");
                                 }
@@ -173,21 +177,27 @@ namespace schaktet_fangelse_platform
                             }
                             else if (köp == 2)
                             {
-                                if (fange.Guld >= 40)
+                                if (fange.VapenBonus == metallror.AttackBonus)
                                 {
-                                    int nyAttackSkada = fange.Attack + metallror.AttackBonus;
-                                    fange.Guld = fange.Guld - 40;
-                                    Console.WriteLine($"Du har köpt {metallror.Namn}. Du gör nu {nyAttackSkada} skada. Guld kvar: {fange.Guld}");
+                                    Console.WriteLine($"Du har redan {metallror.Namn}") ;
+                                }
+                               else if (fange.Guld >= metallror.Pris)
+                                {
+                                    
+                                    fange.BetalaGuld(metallror.Pris);
+                                    fange.BytVapen(metallror.AttackBonus);
+                                    Console.WriteLine($"Du har köpt {metallror.Namn}. Du gör nu {fange.Attack} skada. Guld kvar: {fange.Guld}");
                                     Console.WriteLine();
                                 }
-                                else if (fange.Guld < 40)
+                               
+                                else if (fange.Guld < metallror.Pris)
                                 {
                                     Console.WriteLine($"Du har inte råd med {metallror.Namn} du har {fange.Guld} Guld");
                                 }
                             }
                             else if (köp == 0)
                             {
-                                Arena = false;
+                                svartMarknad = false;
                                 
                             }
                         }
@@ -195,14 +205,19 @@ namespace schaktet_fangelse_platform
                     }
                     else
                     {
-                        Console.WriteLine($"{fange.Namn} måste vara minst level 5 för att åka ner i schaktet");
+                        Console.WriteLine($"{fange.Namn} måste vara minst level 5 för att åka ner i Arenan");
                     }
                 }
                 else if (val == 4)
+                    if (fange.Level >= 5)
                 {
                     Arenan arena = new Arenan();
                     arena.StartaArena(fange, rnd);
                 }
+                else if (fange.Level < 5)
+                    {
+                        Console.WriteLine($"Du måste vara level 5 för att åka ner i Arenan. {fange.Namn} är bara level {fange.Level}");
+                    }
             }
 
             Console.WriteLine($"\nSpelet är slut! Du överlevde i {fange.Dagar} dagar och nådde level {fange.Level}. Total XP: {fange.XP}");
