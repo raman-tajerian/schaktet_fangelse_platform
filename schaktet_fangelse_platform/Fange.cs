@@ -16,6 +16,7 @@ namespace schaktet_fangelse_platform
         public int Dagar { get; private set; }
         public int Guld { get; private set; }
         public int VapenBonus { get; private set; }
+        public int TotalXP { get; private set; }
 
 
         private int XPForNastaLevel => 50 * Level;  // Här utförs räkning av XP vid nästa nivå
@@ -79,6 +80,7 @@ namespace schaktet_fangelse_platform
         public void GainXP(int mangd)
         {
             XP += mangd;
+            TotalXP += mangd;
             Console.WriteLine($"{Namn} får {mangd} XP. Totalt XP: {XP}");
 
             // While istället för if, ifall spelaren får så mycket XP att flera levels klaras av samtidigt

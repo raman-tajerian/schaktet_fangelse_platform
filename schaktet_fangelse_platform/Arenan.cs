@@ -46,6 +46,7 @@ namespace schaktet_fangelse_platform
                     int val = int.Parse(Console.ReadLine());
 
                     int monsterSkada = monster.Attack - fange.Forsvar;
+                    if (monsterSkada < 1) monsterSkada = 1;
                     bool monsterDog = false;
                     bool fangeDog = false;
 
@@ -86,9 +87,10 @@ namespace schaktet_fangelse_platform
                         fange.LaggTillGuld(monster.TappaGuld());
                         striden = false;
                     }
-
+                    
                 }
-            } fange.NyDag();
+                fange.NyDag();
+            } 
             Console.WriteLine("Du vann! Du besegrade samtliga motståndare!");
             fange.GainXP(SegerBonus);
             return true;

@@ -220,7 +220,7 @@ namespace schaktet_fangelse_platform
                     }
             }
 
-            Console.WriteLine($"\nSpelet är slut! Du överlevde i {fange.Dagar} dagar och nådde level {fange.Level}. Total XP: {fange.XP}");
+            Console.WriteLine($"\nSpelet är slut! Du överlevde i {fange.Dagar} dagar och nådde level {fange.Level}. Total XP: {fange.TotalXP}");
         }
     }
 }
