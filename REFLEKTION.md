@@ -22,15 +22,19 @@ Jag kom vidare genom att faktiskt köra spelet upprepade gånger och läsa utskr
 Hur fungerade samarbetet i gruppen?
 
 Vad fungerade bra?
+
 Överlag fungerade allt inom arbetet väldigt bra, vi hade störst fördel av att vi jobbade med varandra i det tidigare projektet så vi tog lärdom från hur det gick tidigare och kunde förbättra det denna gången. Vi hade en bra tidsplan och bra kommunikation och uppgiften kändes jämnt uppdelad för oss båda. Vi diskuterade även vårt program när vi sågs under lektionerna och gick igenom vad vi ska göra härnäst och vad vi behöver förbättra i vår kod.
 
 Vad var svårt?
+
 Jag kände för det mesta att inget var riktigt svårt mellan oss som grupp men om jag ändå var tvungen att välja var det nog när våra klasser möttes i Program.cs Det kunde vara olikheter i våra namespaces och liknande men även att skapa konflikter så vi fick anpassa vårt arbetssätt och jobba tätare tillsammans genom att skriva varje gång vi pushar eller pullar.
 
 Hur delade ni upp arbetet
+
 Som beskrivet i rapporten delade vi upp arbetet i olika kodfiler vilket fungerade bra och utan större problem. Rapporten skrev vi tillsammans i ett delat Google Docs som vi båda kunde redigera parallellt.
 
 Om du fick göra om det - vad hade du gjort annorlunda?
+
 Jag hade testat koden löpande medan jag skrev den, istället för att vänta tills hela klassen var klar. Flera av buggarna vi hittade i efterhand hade förmodligen synts tidigare om vi kört spelet oftare under byggandet, inte bara i slutet. Även kanske jobbat tydligare med kraven genom att skriva ner dem, för att även om jag förstod uppgiften helt var det enkelt att komma bort sig och när man skrivit en del kod glömma bort att monster till exempel inte kan komma tillbaka med 0 HP.
 Jag hade också lagt till kommentarer direkt när jag skrev koden, istället för att gå tillbaka och lägga till dem efteråt. Det gjorde att jag fick tänka igenom samma logik två gånger.
 
