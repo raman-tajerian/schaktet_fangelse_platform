@@ -12,7 +12,7 @@ Datum: 2026-09-30
 GitHub: raman-tajerian och Martin-Backlund / Länk till repo: 
 https://github.com/raman-tajerian/schaktet_fangelse_platform
 
-Testa gärna spelet här: file:///C:/Users/raman/Downloads/Schaktet333%20(2).html
+[Spela Schaktet här](https://raman-tajerian.github.io/schaktet_fangelse_platform/)
 
 Viktigt: Vi följde den förra mallen så vi har inte samma rubriker på frågorna och våran VG del finns i rapporten istället för reflektion. Hoppas ändå att vi förklarar det mesta och om något skulle fattas kan vi lägga till om du frågar efter det!
 
